@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="icon" href="images\icons8-area-chart-96.png">
+		<title>Hotel Revenue</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="assets/prism.css" rel="stylesheet" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">F.Anasse</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li> 
+							<li><a href="About_me.html">About me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>" Analyzing Hotel Revenue Data with SQL and Tableau"</h1>
+							<h3>Introduction:</h3>
+							<p class="my-paragraph" style="font-size: 20px;">This report investigates the Hotel Revenue Data using SQL and Tableau to create a dashboard. The original dataset was taken from Kaggle. The main goal of this project is to analyze the data to gain insights into the hotel revenue trends, including the comparison of revenue and nights between 2018, 2019, and 2020. The report also examines the difference in revenue between the city hotel and resort hotel and explores the impact of market segments and meal costs on revenue.</p>
+							<h3>Methods:</h3>
+							<p class="my-paragraph" style="font-size: 20px;">SQL Server Management Studio was used to explore the dataset and generate insights. The data was cleaned and processed using SQL to standardize the days and nights into "total_week_nights". The "Revenue" column was created using the number of nights multiplied by the "ADR" (Average Daily Rate). Additionally, the "Revenue" that shows 0 while "total_week_nights" shows more than 0 means that the reservation is canceled, and there is no deposit. 
+							<br>After performing data cleaning using SQL, A dashboard was created using Tableau to visualize the insights gained from the analysis. The dashboard included visual representations of the hotel revenue trends over time and the difference in revenue between the city hotel and resort hotel. It also included a Hotel Guest Country of Origin Map, which provided a geographical representation of the guests' countries of origin. Overall, the dashboard provided a user-friendly and interactive interface for exploring the insights gained from the analysis.</p>
+							
+					
+							<div class="container">
+								<div class="paragraph">
+									<h3>Results:</h3>
+									<p class="my-paragraph" style="font-size: 20px;" >The analysis revealed that there was a 313.23% increase in revenue from 2018 to 2019 and about 295.926% or 149,197 more nights compared to 2018. There was a 29.24% decrease in revenue from 2019 to 2020 and about -40.93% or -81,702 nights compared to 2019 (2020 data may not be complete). However, there was a 192.38% increase in revenue from 2018 to 2020 and about 133.873% or 67,495 more nights compared to 2018. Moreover, the city hotel had slightly higher total revenue compared to the resort hotel (about 9.14%). The analysis also showed that the revenue was increasing over time, with revenue being 3.68 million in 2018, 14.93 million in 2019, and 10.51 million in 2020 .However, the 2020 data may not be complete, and further investigation is needed. The findings also suggest that the exact location of the hotel should be considered to investigate more, especially why there is a peak in revenue during July and August.</p>	
+								<br>
+								</div>
+					
+								<div class="dashboard-container">
+								<div class="dashboard">
+								<div class='tableauPlaceholder' id='viz1683469578542' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' 
+									src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FR&#47;FRGPMH2FP&#47;1_rss.png' 
+									style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' 
+										value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' />
+										 <param name='path' value='shared&#47;FRGPMH2FP' /> <param name='toolbar' value='yes' /><param name='static_image' 
+										 value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;FR&#47;FRGPMH2FP&#47;1.png' /> <param name='animate_transition' value='yes' />
+										 <param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' />
+										 <param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1683469578542');                    
+										 var vizElement = divElement.getElementsByTagName('object')[0];                   
+										  if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='500px';vizElement.style.maxHeight='700px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+										  else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='500px';vizElement.style.maxHeight='700px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+										  else { vizElement.style.width='100%';vizElement.style.height='1000px';}            var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+								</div>
+							  </div>
+							</div>
+							<style>
+								.dashboard-container {
+									padding-top: 75px;
+								}
+							</style>
+							  <style>
+							  .container {
+								display: grid;
+								grid-template-columns: 1fr 2fr;
+								gap: 20px;
+							  }
+							  .dashboard {
+								display: flex;
+								justify-content: center;
+							  }
+							  </style>
+							<div class="button-container">
+								<a href="https://github.com/Anasse-Farssi/SQL/blob/main/Hotel_Revenue_Historical_Full.sql" target="_blank"  class="button">Full Code</a>
+								<a href="https://public.tableau.com/shared/MMPMJMZRT?:display_count=n&:origin=viz_share_link"  target="_blank" class="button">Dashboard</a>
+							  </div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<div class="icon-container"  >
+									<section>
+										<h2 style="text-align: center;">Get in touch</h2>
+										<ul class="icons">
+											<li><a href="https://www.facebook.com/profile.php?id=100081817959037"  target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="https://github.com/Anasse-Farssi?tab=repositories" target="_blank"  class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+											<li><a href="mailto:anassefarssi1996@gmail.com,anasse.farssi@yahoo.com" target="_blank"  class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+											<li><a href="https://www.linkedin.com/in/anasse-farssi/" target="_blank"  class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

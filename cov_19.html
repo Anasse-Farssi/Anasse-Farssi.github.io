@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="icon" href="images\icons8-area-chart-96.png">
+		<title>COVID-19</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="assets/prism.css" rel="stylesheet" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">F.Anasse</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li> 
+							<li><a href="About_me.html">About me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>"Data Cleaning with SQL and Interactive Power BI Dashboard"</h1>
+							<h3>Introduction:</h3>
+							<p style="font-size: 20px;">The COVID-19 pandemic has had a profound impact on the world, affecting millions of people and economies across the globe. Understanding the pandemic's impact requires access to comprehensive, accurate, and organized data. In this project, we aimed to clean and organize COVID-19 data using SQL techniques and create visualizations using Power BI to showcase the data insights.</p>
+							<h3>Methods:</h3>
+							<p style="font-size: 20px;">We used SQL (SSMS) techniques, including views, CTEs, temp tables, joins, group by statements, subqueries, and more, to clean and organize the COVID-19 data. These techniques allowed us to transform the raw data into a more structured format, making it easier to analyze and visualize. Various calculations were performed, such as positive cases out of tests, death percentage out of confirmed cases, death percentage for the country population, tests percentage, number of tests per each person from the population, and more, to provide a comprehensive understanding of the pandemic's impact.</p>
+							<h3>Results:</h3>
+							<p style="font-size: 20px;">Power BI was used to create various visualizations to showcase the data insights. We created maps, line charts, bar charts, and treemaps to represent the data. The visualizations highlighted the distribution of COVID-19 infections, mortality rates across countries over time, people fully vaccinated against COVID-19, confirmed cases per selected locations, new performed tests across each continent over time, total COVID-19 cases and deaths across continents, positive cases to test percentage, and infection percentage across continents. These visualizations helped provide a more complete picture of the pandemic's impact and enable more informed decision-making.</p>
+							<h3>Code sample:</h3>
+	<pre class="language-sql"><code>
+GO
+CREATE VIEW VIEW_T_1 AS	
+WITH CTE_VIEW_1( continent,location, date , population, total_cases,new_deaths,
+death_percent_cases, total_tests,  positive_percentage ,new_vaccinations,
+rolling_new_vaccinations, people_fully_vaccinated) AS ( 
+SELECT cases.continent, cases.location, CONVERT(DATE,cases.date) AS DATE, 
+cases.population,cases.total_cases,newdt.new_deaths, 
+ROUND(	CAST(	cases.total_deaths AS FLOAT) / CONVERT(	FLOAT,	cases.total_cases)*100,2)
+As death_percent_cases, cases.total_tests, 
+ROUND(	CAST(	cases.total_cases AS float)/CONVERT(float,	cases.total_tests)*100,2)
+As positive_percentage_out_of_tests , newdt.new_vaccinations, 
+SUM(	CONVERT(bigint,newdt.new_vaccinations)) 
+OVER(	Partition by cases.Location ORDER BY cases.location, cases.date  ROWS UNBOUNDED PRECEDING)
+AS rolling_new_vaccinations, MAX(	CONVERT(	bigint,vac.fully_vaccinated)) 
+OVER(	Partition by cases.Location ORDER BY cases.location, cases.date  ROWS UNBOUNDED PRECEDING) 
+AS 	people_fully_vaccinated  FROM COV19..cases AS cases
+JOIN cov19..newdt AS newdt 
+ON cases.location = newdt.location
+AND cases.date = newdt.date
+JOIN COV19..VAC AS vac
+ON VAC.location = newdt.location
+AND VAC.date = newdt.date)
+SELECT *,(people_fully_vaccinated /population)*100 
+AS fully_vac_percentage,(rolling_new_vaccinations/population)*100 
+AS new_vac_percentage FROM CTE_VIEW_1
+GO
+					</code></pre>
+
+					<script src="assets/prism.js"></script>
+ 					 <script>
+   					 Prism.highlightAll();
+  					</script>
+					<br>
+							<h3>Dashboard:</h3>
+							<iframe src="files/Covid_19_dashboard.pdf" width="100%" height="500px"></iframe>
+
+							<div class="button-container">
+								<a href="https://github.com/Anasse-Farssi/SQL/blob/main/Cov19_Query.sql"  target="_blank" class="button">Full Code</a>
+							  </div>
+						</div>
+					</div>
+					
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<div class="icon-container"  >
+									<section>
+										<h2 style="text-align: center;">Get in touch</h2>
+										<ul class="icons">
+											<li><a href="https://www.facebook.com/profile.php?id=100081817959037"  target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="https://github.com/Anasse-Farssi?tab=repositories" target="_blank"  class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+											<li><a href="mailto:anassefarssi1996@gmail.com,anasse.farssi@yahoo.com" target="_blank"  class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+											<li><a href="https://www.linkedin.com/in/anasse-farssi/" target="_blank"  class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

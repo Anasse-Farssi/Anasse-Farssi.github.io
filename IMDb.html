@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="icon" href="images\icons8-area-chart-96.png">
+		<title>Web Scraping</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="assets/prism.css" rel="stylesheet" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">F.Anasse</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li> 
+							<li><a href="About_me.html">About me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>"Retrieving the Top 250 Movies from IMDB"</h1>
+							<h3>Introduction:</h3>
+							<p style="font-size: 20px;">The purpose of this project is to scrape the top 250 movies from IMDb's official website using Python, with the help of libraries such as BeautifulSoup, Requests, and Pandas. The data is extracted from the HTML and converted into a Pandas DataFrame. The following report outlines the process used to complete this project.</p>
+							<h3>Methods:</h3>
+							<p style="font-size: 20px;">The process began by importing the necessary libraries, including BeautifulSoup, Requests, and Pandas. The BeautifulSoup library was used to parse the HTML content of the IMDb website, while the Requests library was used to request the data from the IMDb website. Once the data was extracted, it was then converted into a Pandas DataFrame.</p>
+							<h3>Results:</h3>
+							<p style="font-size: 20px;">The data extracted from the IMDb website consisted of the following columns: Rank, Title, Year, and Rating. The top 10 rows of the extracted data are shown below:</p>
+							<table>
+								<thead>
+								  <tr>
+									<th>Rank</th>
+									<th>Title</th>
+									<th>Year of Release</th>
+									<th>IMDb Rating</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<td>1</td>
+									<td>The Shawshank Redemption</td>
+									<td>1994</td>
+									<td>9.2</td>
+								  </tr>
+								  <tr>
+									<td>2</td>
+									<td>The Godfather</td>
+									<td>1972</td>
+									<td>9.1</td>
+								  </tr>
+								  <tr>
+									<td>3</td>
+									<td>The Dark Knight</td>
+									<td>2008</td>
+									<td>9.0</td>
+								  </tr>
+								  <tr>
+									<td>4</td>
+									<td>The Godfather: Part II</td>
+									<td>1974</td>
+									<td>9.0</td>
+								  </tr>
+								  <tr>
+									<td>5</td>
+									<td>12 Angry Men</td>
+									<td>1957</td>
+									<td>8.9</td>
+								  </tr>
+								  <tr>
+									<td>6</td>
+									<td>Schindler's List</td>
+									<td>1993</td>
+									<td>8.9</td>
+								  </tr>
+								  <tr>
+									<td>7</td>
+									<td>The Lord of the Rings: The Return of the King</td>
+									<td>2003</td>
+									<td>8.9</td>
+								  </tr>
+								  <tr>
+									<td>8</td>
+									<td>Pulp Fiction</td>
+									<td>1994</td>
+									<td>8.8</td>
+								  </tr>
+								  <tr>
+									<td>9</td>
+									<td>The Lord of the Rings: The Fellowship of the Ring</td>
+									<td>2001</td>
+									<td>8.8</td>
+								  </tr>
+								  <tr>
+									<td>10</td>
+									<td>Il buono, il brutto, il cattivo</td>
+									<td>1966</td>
+									<td>8.8</td>
+								  </tr>
+								</tbody>
+							  </table>
+							  
+							<div class="button-container">
+								<a href="https://github.com/Anasse-Farssi/Jupyter_Notebook/blob/main/imdb_top_250.ipynb" target="_blank" class="button">Full Code</a>
+							  </div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<div class="icon-container"  >
+									<section>
+										<h2 style="text-align: center;">Get in touch</h2>
+										<ul class="icons">
+											<li><a href="https://www.facebook.com/profile.php?id=100081817959037"  target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="https://github.com/Anasse-Farssi?tab=repositories" target="_blank"  class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+											<li><a href="mailto:anassefarssi1996@gmail.com,anasse.farssi@yahoo.com" target="_blank"  class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+											<li><a href="https://www.linkedin.com/in/anasse-farssi/" target="_blank"  class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="icon" href="images\icons8-area-chart-96.png">
+		<title>PostgreSQL</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="assets/prism.css" rel="stylesheet" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">F.Anasse</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li> 
+							<li><a href="About_me.html">About me</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>"20 Olympic Event Questions Answered with SQL Queries from 1896 to 2016"</h1>
+							<h3>Introduction:</h3>
+							<p style="font-size: 20px;">The objective of this project was to use PostgreSQL to analyze a large dataset containing information about the Olympic Games from 1896 to 2016. The aim was to answer 20 questions related to the Olympics using SQL techniques such as CTEs, temporary tables, subqueries, joins, wildcards, and group by clauses. The dataset was taken from Kaggle and contained a wide range of information about the Olympic Games, including the athletes, countries, sports, and medals won.</p>
+							<h3>Methods:</h3>
+							<p style="font-size: 20px;">To begin the project, the dataset was imported into PostgreSQL, and the necessary tables were created. Various SQL techniques were then employed to answer the 20 questions related to the Olympics. CTEs and subqueries were used to extract information from the dataset and create new tables, while joins were used to combine multiple tables into a single result set. Wildcards were also used to search for specific information within the dataset.</p>
+							<h3>Results:</h3>
+							<p style="font-size: 20px;">The 20 questions were successfully answered using a range of SQL techniques. The results included information such as the total number of nations that participated in each Olympic Games, the sport that was played in all summer Olympics, the most successful countries and athletes, and the total number of medals won by each country. </p>
+							<h3>Code sample:</h3>
+							<p>10.Find the ratio of male and female athletes participated in all Olympic games.</p>
+	<pre class="language-sql"><code>
+DROP TABLE IF EXISTS MEDALS;
+	CREATE TEMPORARY TABLE MEDALS (
+		Nations VARCHAR(30),
+		GAMES VARCHAR(30),
+		Gold_medals INT ,
+		Silver_medals INT ,
+		Bronze_medals INT,
+		Total_medals INT)
+
+INSERT INTO MEDALS 
+	SELECT DISTINCT regions AS Nations , games,
+	SUM(CASE WHEN om.MEDAL = 'Gold'   THEN 1 ELSE 0 END) AS Gold_medals,
+	SUM(CASE WHEN om.MEDAL = 'Silver' THEN 1 ELSE 0 END) AS Silver_medals,
+	SUM(CASE WHEN om.MEDAL = 'Bronze' THEN 1 ELSE 0 END) AS Bronze_medals,
+	COUNT(medal) AS Total_medals
+	FROM olympics_data AS om
+	JOIN noc_regions AS ng
+	ON om.noc = ng.noc
+	WHERE MEDAL !='NA' AND MEDAL IS NOT NULL 
+	GROUP BY games, regions;
+		
+	SELECT DISTINCT games , 
+	CONCAT(FIRST_VALUE (Gold_medals) OVER (PARTITION BY games ORDER BY Gold_medals DESC),
+	' ',FIRST_VALUE (Nations) OVER (PARTITION BY games ORDER BY Gold_medals DESC)) AS GOLD, 
+	CONCAT(FIRST_VALUE (Silver_medals) OVER (PARTITION BY games ORDER BY Silver_medals DESC),
+	' ',FIRST_VALUE (Nations) OVER (PARTITION BY games ORDER BY Silver_medals DESC)) AS SILVER, 
+	CONCAT(FIRST_VALUE (Bronze_medals) OVER (PARTITION BY games ORDER BY Bronze_medals DESC),
+	' ',FIRST_VALUE (Nations) OVER (PARTITION BY games ORDER BY Bronze_medals DESC)) AS BRONZE
+	FROM MEDALS
+	GROUP BY games ,NATIONS, Gold_medals,Silver_medals,Bronze_medals 
+	ORDER BY 1;
+					</code></pre>
+
+					<script src="assets/prism.js"></script>
+ 					 <script>
+   					 Prism.highlightAll();
+  					</script>
+							<br>
+
+							<div class="button-container">
+								<a href="https://github.com/Anasse-Farssi/SQL/blob/main/olympics.sql" target="_blank" class="button">Full Code</a>
+							  </div>
+						</div>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+							<section>
+								<div class="icon-container"  >
+									<section>
+										<h2 style="text-align: center;">Get in touch</h2>
+										<ul class="icons">
+											<li><a href="https://www.facebook.com/profile.php?id=100081817959037"  target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+											<li><a href="https://github.com/Anasse-Farssi?tab=repositories" target="_blank"  class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+											<li><a href="mailto:anassefarssi1996@gmail.com,anasse.farssi@yahoo.com" target="_blank"  class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+											<li><a href="https://www.linkedin.com/in/anasse-farssi/" target="_blank"  class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</section>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
